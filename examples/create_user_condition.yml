@@ -1,0 +1,15 @@
+---
+- hosts: '{{ host_group }}'
+  become: yes
+  serial: 1
+  gather_facts: no
+  tasks:
+  - name: Create Users
+    user:
+      name: '{{ item }}'
+    loop:
+      - maninder
+      - vishwa
+      - zameer
+      - rakesh
+    when: "'lb' in inventory_hostname" 
